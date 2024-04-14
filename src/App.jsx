@@ -36,9 +36,13 @@ function App() {
     if (filtered.length > 10) setCountryDisplay(<p>Too many matches, specify another filter</p>);
     else if (filtered.length === 1) setCountryDisplay(<CountryDetail country={filtered[0]} />);
     else if (filtered.length === 0) setCountryDisplay(<p>No matches</p>);
-    else setCountryDisplay(<CountryList country={filtered} />);
-  };
+    else setCountryDisplay(<CountryList country={filtered} onShowDetail={onShowDetail} />);
+  }
 
+  
+  const onShowDetail = (country) => {
+    setCountryDisplay(<CountryDetail country={country} />);
+  };
 
 
   // Event handlers
